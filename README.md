@@ -64,3 +64,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Local Docker setup
+
+The repository ships with a lightweight nginx + PHP-FPM stack so you can run the app without installing PHP locally.
+
+1. Copy `.env.example` to `.env` (if you have not already) and set:
+   - `APP_URL=http://dev.sweet-home.com`
+   - `DB_HOST=host.docker.internal` (or your host IP that exposes MySQL)
+2. Add `dev.sweet-home.com` to your hosts file so it resolves to `127.0.0.1` while Docker is running.
+3. Install dependencies the first time with `docker compose run --rm app composer install` and `docker compose run --rm app npm install` (if you use Vite assets).
+4. Bring the stack online: `docker compose up --build`.
+5. Visit http://dev.sweet-home.com/ after ensuring any local Apache is stopped so Docker can bind to port 80.
+
+The containers mount the project directory, so code edits on your host are reflected immediately. Laravel still talks to your local MySQL instance; adjust the `.env` credentials if your root password differs.
