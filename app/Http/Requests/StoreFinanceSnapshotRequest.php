@@ -23,7 +23,6 @@ class StoreFinanceSnapshotRequest extends FormRequest
     {
         return [
             'snapshot_date' => ['required', 'date', 'unique:finance_snapshots,snapshot_date'],
-            'note' => ['nullable', 'string', 'max:500'],
         ];
     }
 }

@@ -9,20 +9,8 @@
                 @csrf
                 <label for="snapshot_date">Date</label>
                 <input type="date" id="snapshot_date" name="snapshot_date" value="{{ old('snapshot_date', now()->toDateString()) }}" required>
-
-                <label for="note">Note (optional)</label>
-                <textarea id="note" name="note" rows="2">{{ old('note') }}</textarea>
-
                 <button type="submit">Create snapshot</button>
             </form>
-        </article>
-        <article>
-            <h2>Tips</h2>
-            <ul>
-                <li>The latest snapshot is duplicated when you add a new date.</li>
-                <li>Use finance details page to fine tune stocks, sources, and comments.</li>
-                <li>Monthly report & diagrams stay in sync automatically.</li>
-            </ul>
         </article>
     </section>
 
@@ -37,11 +25,13 @@
                 <th>Total (USD)</th>
                 <th>Active (USD)</th>
                 <th>Diff vs. previous</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             @forelse($summaries as $summary)
                 @php($diff = $summary['difference'] ?? 0)
+                @php($canDelete = $summary['date']->isSameMonth(now()))
                 <tr onclick="window.location='{{ route('snapshots.show', $summary['snapshot']) }}'">
                     <td>{{ $summary['date']->format('Y-m-d') }}</td>
                     <td>{{ number_format($summary['total_uah'], 2) }}</td>
@@ -51,10 +41,23 @@
                     <td class="{{ $diff >= 0 ? 'text-success' : 'text-danger' }}">
                         {{ $diff >= 0 ? '+' : '' }}{{ number_format($diff, 2) }}
                     </td>
+                    <td>
+                        @if($canDelete)
+                            <form method="POST"
+                                  action="{{ route('snapshots.destroy', $summary['snapshot']) }}"
+                                  onsubmit="event.stopPropagation(); return confirm('Delete this snapshot?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="secondary" onclick="event.stopPropagation();">Delete</button>
+                            </form>
+                        @else
+                            &mdash;
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6">No snapshots yet.</td>
+                    <td colspan="7">No snapshots yet.</td>
                 </tr>
             @endforelse
             </tbody>

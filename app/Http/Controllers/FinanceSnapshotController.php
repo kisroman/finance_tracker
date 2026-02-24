@@ -78,6 +78,19 @@ class FinanceSnapshotController extends Controller
         ]);
     }
 
+    public function destroy(FinanceSnapshot $snapshot): RedirectResponse
+    {
+        if (! $snapshot->snapshot_date->isSameMonth(now())) {
+            return redirect()->route('snapshots.index')
+                ->with('status', 'Only the current month snapshot can be removed.');
+        }
+
+        $snapshot->delete();
+
+        return redirect()->route('snapshots.index')
+            ->with('status', 'Finance snapshot removed.');
+    }
+
     private function summaries(Collection $snapshots): Collection
     {
         $summaries = $this->aggregator->summarize($snapshots);
