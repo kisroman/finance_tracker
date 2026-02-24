@@ -11,8 +11,9 @@ RUN apt-get update \
        libicu-dev \
        libonig-dev \
        libxml2-dev \
+    && pecl install xdebug \
     && docker-php-ext-install pdo_mysql intl bcmath zip \
-    && docker-php-ext-enable opcache \
+    && docker-php-ext-enable opcache xdebug \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

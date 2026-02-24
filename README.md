@@ -78,3 +78,7 @@ The repository ships with a lightweight nginx + PHP-FPM stack so you can run the
 5. Visit http://dev.sweet-home.com/ after ensuring any local Apache is stopped so Docker can bind to port 80.
 
 The containers mount the project directory, so code edits on your host are reflected immediately. Laravel still talks to your local MySQL instance; adjust the `.env` credentials if your root password differs.
+
+### Xdebug
+
+Xdebug 3 is installed in the PHP container and configured to start a debug session automatically. Point your IDE to port 9003 and set the client/host to `127.0.0.1`. The container forwards traffic to `host.docker.internal`, so no extra SSH tunnels are required. If you want to disable debugging temporarily, edit `docker/php/conf.d/xdebug.ini` (for example, set `xdebug.start_with_request=no`) and restart the containers.

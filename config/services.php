@@ -32,7 +32,11 @@ return [
     ],
 
     'currency_rates' => [
-        'base_url' => env('CURRENCY_RATE_API_BASE', 'https://api.exchangerate.host/latest'),
+        'base_url' => env('CURRENCY_RATE_API_BASE', 'https://open.er-api.com/v6/latest'),
+        'api_key' => env('CURRENCY_RATE_API_KEY'),
+        'api_key_location' => env('CURRENCY_RATE_API_KEY_LOCATION', 'query'),
+        'api_key_name' => env('CURRENCY_RATE_API_KEY_NAME', 'access_key'),
+        'api_key_header_prefix' => env('CURRENCY_RATE_API_KEY_HEADER_PREFIX', ''),
         'base_currency' => env('CURRENCY_BASE', 'UAH'),
         'cache_seconds' => env('CURRENCY_RATE_CACHE_SECONDS', 3600),
     ],
