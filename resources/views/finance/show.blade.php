@@ -14,7 +14,7 @@
     <section>
         <h2>Finance details</h2>
         @forelse($snapshot->details as $detail)
-            <article class="detail-form" style="border:1px solid #e2e8f0; padding:1rem; border-radius:8px; margin-bottom:1rem;">
+            <article class="detail-form" style="border:1px solid #e2e8f0; padding:1rem 1rem 2rem; border-radius:8px;">
                 <form method="POST" action="{{ route('details.update', $detail) }}" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:1rem;" id="detail-update-{{ $detail->id }}">
                     @csrf
                     @method('PUT')
@@ -64,7 +64,7 @@
         @endforelse
     </section>
 
-    <section style="margin-top:2rem;">
+    <section style="padding-top:2rem;">
         <article>
             <h2>Add detail</h2>
             <form class="detail-form" method="POST" action="{{ route('snapshots.details.store', $snapshot) }}">

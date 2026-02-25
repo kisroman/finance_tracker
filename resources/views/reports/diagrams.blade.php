@@ -4,7 +4,7 @@
     <section>
         <h2>Diagrams</h2>
         <p>Visual overview of total balances and monthly performance.</p>
-        <div style="margin-bottom:2rem;">
+        <div style="padding-bottom:2rem;">
             <canvas id="totalsChart" height="120"></canvas>
         </div>
         <div>
