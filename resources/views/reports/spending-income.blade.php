@@ -3,7 +3,6 @@
 @section('content')
     <section>
         <h2>Monthly spending vs income</h2>
-        <p>Values are based on the difference between each finance snapshot and the previous one.</p>
         <table role="grid">
             <thead>
             <tr>

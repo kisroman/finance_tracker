@@ -39,7 +39,7 @@
                             @endforeach
                         </select>
                     </label>
-                    <label class="grid">
+                    <label class="toggle-field">
                         <span>Active?</span>
                         <input type="hidden" name="is_active" value="0">
                         <input type="checkbox" name="is_active" value="1" @checked($detail->is_active)>
@@ -90,7 +90,7 @@
                         @endforeach
                     </select>
                 </label>
-                <label class="grid">
+                <label class="toggle-field">
                     <span>Is active?</span>
                     <input type="hidden" name="is_active" value="0">
                     <input type="checkbox" name="is_active" value="1" checked>

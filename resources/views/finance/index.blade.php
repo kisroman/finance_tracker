@@ -4,10 +4,8 @@
     <section class="grid">
         <article>
             <h2>Add finance snapshot</h2>
-            <p>Pick a date to duplicate the latest details and adjust only what changed.</p>
-            <form method="POST" action="{{ route('snapshots.store') }}">
+            <form method="POST" action="{{ route('snapshots.store') }}" class="snapshot-form">
                 @csrf
-                <label for="snapshot_date">Date</label>
                 <input type="date" id="snapshot_date" name="snapshot_date" value="{{ old('snapshot_date', now()->toDateString()) }}" required>
                 <button type="submit">Create snapshot</button>
             </form>
@@ -64,3 +62,18 @@
         </table>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const snapshotInput = document.getElementById('snapshot_date');
+            if (!snapshotInput || typeof snapshotInput.showPicker !== 'function') {
+                return;
+            }
+
+            const openPicker = () => snapshotInput.showPicker();
+            snapshotInput.addEventListener('focus', openPicker);
+            snapshotInput.addEventListener('click', openPicker);
+        });
+    </script>
+@endpush
