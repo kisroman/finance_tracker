@@ -16,9 +16,11 @@ class ReportController extends Controller
     public function spendingIncome(): View
     {
         $summaries = $this->summaries();
+        $report = $this->aggregator->spendingIncomeByMonth($summaries);
 
         return view('reports.spending-income', [
-            'report' => $this->aggregator->spendingIncomeByMonth($summaries),
+            // show newest months first while keeping keys intact
+            'report' => array_reverse($report, true),
         ]);
     }
 
