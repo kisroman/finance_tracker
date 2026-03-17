@@ -120,7 +120,7 @@
                         <input type="checkbox" name="is_active" value="1" checked form="detail-create">
                     </td>
                     <td>
-                        <div class="detail-actions">
+                        <div class="detail-actions detail-actions--single">
                             <button type="submit" form="detail-create">Add detail</button>
                         </div>
                     </td>
@@ -183,22 +183,26 @@
         }
 
         .toggle-cell {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative;
+            padding: 0;
         }
 
         .toggle-cell input[type="checkbox"] {
             width: 1rem;
             height: 1rem;
             margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .detail-actions {
-            display: flex;
+            display: inline-flex;
             gap: 0.25rem;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
+            width: 100%;
         }
 
         .detail-actions button {
@@ -216,6 +220,10 @@
 
         .detail-actions .secondary {
             background: #475569;
+        }
+
+        .detail-actions--single button {
+            width: 100%;
         }
 
         .details-table tbody tr:hover {
