@@ -63,14 +63,15 @@
             height: 1.5rem;
         }
     </style>
+    @stack('styles')
 </head>
 <body>
 @if(!empty($headerRates))
     <div style="background:#e0e7ff; color:#1e3a8a; padding:0.5rem 0;">
         <div class="container" style="display:flex; gap:1rem; font-size:0.9rem;">
             <span><strong>Rates ({{ config('services.currency_rates.base_currency') }} base):</strong></span>
-            <span>1 USD = {{ number_format($headerRates['USD'], 2) }} {{ config('services.currency_rates.base_currency') }}</span>
-            <span>1 EUR = {{ number_format($headerRates['EUR'], 2) }} {{ config('services.currency_rates.base_currency') }}</span>
+            <span>1 USD = {{ number_format($headerRates['USD'], 0) }} {{ config('services.currency_rates.base_currency') }}</span>
+            <span>1 EUR = {{ number_format($headerRates['EUR'], 0) }} {{ config('services.currency_rates.base_currency') }}</span>
         </div>
     </div>
 @endif

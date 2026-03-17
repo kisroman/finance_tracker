@@ -44,18 +44,17 @@ class StockController extends Controller
 
     private function validatedData(Request $request, ?int $ignoreId = null): array
     {
-        $request->merge([
-            'is_active' => $request->boolean('is_active'),
-        ]);
-
-        return $request->validate([
+        $data = $request->validate([
             'name' => [
                 'required',
                 'string',
                 'max:120',
                 Rule::unique('stocks', 'name')->ignore($ignoreId),
             ],
-            'is_active' => ['required', 'boolean'],
         ]);
+
+        $data['is_active'] = true;
+
+        return $data;
     }
 }

@@ -17,10 +17,10 @@
                 @php($net = ($data['income'] ?? 0) - ($data['spending'] ?? 0))
                 <tr>
                     <td>{{ $month }}</td>
-                    <td>{{ number_format($data['income'] ?? 0, 2) }}</td>
-                    <td>{{ number_format($data['spending'] ?? 0, 2) }}</td>
+                    <td>{{ number_format($data['income'] ?? 0, 0) }}</td>
+                    <td>{{ number_format($data['spending'] ?? 0, 0) }}</td>
                     <td class="{{ $net >= 0 ? 'text-success' : 'text-danger' }}">
-                        {{ $net >= 0 ? '+' : '' }}{{ number_format($net, 2) }}
+                        {{ $net >= 0 ? '+' : '' }}{{ number_format($net, 0) }}
                     </td>
                 </tr>
             @empty

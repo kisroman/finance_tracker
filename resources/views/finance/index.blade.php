@@ -32,12 +32,12 @@
                 @php($canDelete = $summary['date']->isSameMonth(now()))
                 <tr onclick="window.location='{{ route('snapshots.show', $summary['snapshot']) }}'">
                     <td>{{ $summary['date']->format('Y-m-d') }}</td>
-                    <td>{{ number_format($summary['total_uah'], 2) }}</td>
-                    <td>{{ number_format($summary['active_total_uah'], 2) }}</td>
-                    <td>{{ number_format($summary['total_usd'], 2) }}</td>
-                    <td>{{ number_format($summary['active_total_usd'], 2) }}</td>
+                    <td>{{ number_format($summary['total_uah'], 0) }}</td>
+                    <td>{{ number_format($summary['active_total_uah'], 0) }}</td>
+                    <td>{{ number_format($summary['total_usd'], 0) }}</td>
+                    <td>{{ number_format($summary['active_total_usd'], 0) }}</td>
                     <td class="{{ $diff >= 0 ? 'text-success' : 'text-danger' }}">
-                        {{ $diff >= 0 ? '+' : '' }}{{ number_format($diff, 2) }}
+                        {{ $diff >= 0 ? '+' : '' }}{{ number_format($diff, 0) }}
                     </td>
                     <td>
                         @if($canDelete)

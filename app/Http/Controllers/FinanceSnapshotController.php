@@ -8,6 +8,7 @@ use App\Models\FinanceDetail;
 use App\Models\FinanceSnapshot;
 use App\Models\Stock;
 use App\Services\FinanceSnapshotAggregator;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,12 @@ class FinanceSnapshotController extends Controller
 
     public function index(): View
     {
-        $snapshots = FinanceSnapshot::with('details')->orderBy('snapshot_date')->get();
+        $fromDate = Carbon::now()->subMonths(6)->startOfMonth();
+
+        $snapshots = FinanceSnapshot::with('details')
+            ->where('snapshot_date', '>=', $fromDate)
+            ->orderBy('snapshot_date')
+            ->get();
         $summaries = $this->summaries($snapshots)
             ->sortByDesc('date')
             ->values();
