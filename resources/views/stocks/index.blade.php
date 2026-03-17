@@ -62,85 +62,110 @@
     <style>
         .stock-table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 0.35rem;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
         }
 
-        .stock-table thead th {
+        .stock-table thead th,
+        .stock-table td {
             text-align: left;
-            font-size: 0.85rem;
+            padding: 0.12rem 0.3rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: #cbd5f5;
         }
 
-        .stock-table tbody tr {
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.92) 100%);
-            box-shadow: 0 4px 8px rgba(2, 6, 23, 0.35);
-            border: 1px solid #1f2937;
+        .stock-table td {
+            text-transform: none;
+            letter-spacing: normal;
+            color: #e2e8f0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
         }
 
-        .stock-table td {
-            padding: 0.2rem 0.35rem;
-            vertical-align: middle;
+        .stock-table tbody tr:last-child td {
+            border-bottom: none;
         }
 
         .stock-table input[type="text"] {
             width: 100%;
-            padding: 0.2rem 0.35rem;
-            background: #0f172a;
+            padding: 0.08rem 0.25rem;
+            height: 1.6rem;
+            background: rgba(15, 23, 42, 0.35);
             border: 1px solid #1e293b;
             color: #f8fafc;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
         }
 
         .stock-actions {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.2rem;
+            display: inline-flex;
+            gap: 0.25rem;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-width: 150px;
+            white-space: nowrap;
         }
 
         .stock-actions button {
-            width: 100%;
-            padding: 0.25rem 0.4rem;
-            font-size: 0.8rem;
+            min-width: 72px;
+            height: 1.6rem;
+            padding: 0;
+            font-size: 0.75rem;
             background: #1d4ed8;
             border: none;
             color: #fff;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .stock-actions .secondary {
             background: #475569;
         }
 
+        .stock-table thead th:last-child,
+        .stock-table td.stock-actions {
+            width: 190px;
+        }
+
         .add-stock-form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 0.5rem;
+            align-items: center;
         }
 
         .add-stock-form label {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem;
+            gap: 0.15rem;
             color: #cbd5f5;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         .add-stock-form input[type="text"] {
-            padding: 0.25rem 0.4rem;
-            background: #0f172a;
+            padding: 0.1rem 0.3rem;
+            height: 1.8rem;
+            background: rgba(15, 23, 42, 0.35);
             border: 1px solid #1e293b;
             color: #f8fafc;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .add-stock-form button {
-            width: auto;
-            padding: 0.35rem 0.9rem;
-            font-size: 0.9rem;
+            width: 100%;
+            padding: 0.2rem 0.8rem;
+            height: 1.8rem;
+            font-size: 0.8rem;
+            align-self: center;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sr-only {

@@ -141,10 +141,11 @@
 
         .details-table th,
         .details-table td {
-            padding: 0.2rem 0.35rem;
+            padding: 0.1rem 0.25rem;
             text-align: left;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             vertical-align: middle;
+            line-height: 1.2;
         }
 
         .details-table thead th {
@@ -165,8 +166,9 @@
         .details-table input,
         .details-table select {
             width: 100%;
-            padding: 0.18rem 0.3rem;
-            font-size: 0.82rem;
+            padding: 0.08rem 0.25rem;
+            font-size: 0.75rem;
+            height: 1.75rem;
             background: rgba(15, 23, 42, 0.35);
             border: 1px solid #1e293b;
             color: #f8fafc;
@@ -209,10 +211,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 72px;
-            height: 32px;
+            width: 68px;
+            height: 1.8rem;
             padding: 0;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             background: #1d4ed8;
             border: none;
             color: #fff;
