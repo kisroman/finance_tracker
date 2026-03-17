@@ -11,14 +11,14 @@
         header nav a { color: #fff; margin-right: 1rem; }
         header nav ul:first-of-type { padding-left: 1rem; }
         .container { max-width: none; width: 100%; margin: 0; }
-        main section { margin-block: 0; padding: 0.5rem 0; }
+        main section { margin-block: 1rem; padding: 0.5rem 0; }
         section h2 {
             margin: 0 0 0.5rem;
             background: #101727;
             color: #fff;
             padding: 0.35rem 0.6rem;
-            border-radius: 6px;        }
-        .grid > article { margin: 0; }
+            border-radius: 6px;
+        }
         table th,
         table td { padding: 0.18rem 0.255rem; }
         table tbody tr { cursor: pointer; }
